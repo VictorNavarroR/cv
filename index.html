@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Victor José Navarro Rodríguez — CV</title>
 
-  <!-- Fuente moderna -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
@@ -123,7 +122,6 @@
     }
     .contacts div{ margin-bottom:6px; }
 
-    /* Theme Toggle Switch */
     .theme-toggle {
       display: flex;
       align-items: center;
@@ -191,7 +189,6 @@
       transition: color 0.3s ease;
     }
 
-    /* Language Selector */
     .language-selector {
       position: relative;
       margin-bottom: 10px;
@@ -295,7 +292,6 @@
       transition: all 0.3s ease;
     }
 
-    /* Experience */
     .job {
       margin-bottom:16px;
     }
@@ -329,7 +325,6 @@
       transition: color 0.3s ease;
     }
 
-    /* Education */
     .edu-item{ 
       margin-bottom:12px; 
     }
@@ -355,7 +350,6 @@
       transition: all 0.3s ease;
     }
 
-    /* Print rules */
     @media print{
       body{ background:white; }
       .container{ box-shadow:none; border-radius:0; margin:0; padding:18px; }
@@ -365,7 +359,6 @@
       .theme-toggle, .language-selector { display:none; }
     }
 
-    /* Responsive */
     @media (max-width:900px){
       .container{ padding:18px; }
       main{ flex-direction:column; }
@@ -373,7 +366,6 @@
       .contacts{ text-align:left; margin-top:12px; }
     }
 
-    /* Print button */
     .print-btn{
       background: transparent;
       border:1px solid var(--border);
@@ -389,7 +381,6 @@
       border-color:var(--accent);
     }
 
-    /* Profile paragraph styles */
     .profile-text {
       color:var(--text) !important;
       font-size:13px;
@@ -397,7 +388,6 @@
       transition: color 0.3s ease;
     }
 
-    /* Smooth transitions for all interactive elements */
     * {
       transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     }
@@ -441,12 +431,11 @@
     </header>
 
     <main>
-      <!-- Left column -->
       <aside class="col-left" aria-label="Información lateral">
         <section>
           <div class="section-title"><h3 id="profile-title">Perfil</h3></div>
           <p class="profile-text" id="profile-text-1">
-            Desarrollador frontend con más de 10 años de experiencia en interfaces dinámicas y responsivas usando React. Formación en diseño gráfico que aporta visión UI/UX y cuidado del detalle visual.
+            Desarrollador fullstack con mucho amor por el frontend, acumulo más de 10 años de experiencia en el desarrollo web y he tenido la oportunidad de participar en la creación de diversos proyectos desde su planificación hasta su puesta en marcha. Formación en diseño gráfico que aporta visión UI/UX y cuidado del detalle visual.
           </p><br>
           <p class="profile-text" id="profile-text-2">Con ganas de acepar nuevos desafios, aportar valor a proyectos innovadores y crecer como profesional.</p>
         </section>
@@ -454,7 +443,9 @@
         <section>
           <div class="section-title"><h3 id="skills-title">Competencias</h3></div>
           <ul class="skill-list">
-            <li><strong id="frontend-label">Frontend:</strong> JavaScript (ES6+), HTML5, React (Hooks, Context, Redux, React Query), TypeScript, VueJs, Vuex, NodeJs, ExpressJs</li>
+            <li><strong id="frontend-label">Frontend:</strong> JavaScript (ES6+), HTML5, React (Hooks, Context, Redux, React Query), TypeScript, VueJs, Vuex</li>
+            <li><strong id="backend-label">Backend:</strong> PHP, NodeJs, ExpressJs</li>
+            <li><strong id="db-label">Databases:</strong> MySql, MongoDB</li>
             <li><strong id="styles-label">Estilos:</strong> CSS3, SASS, Styled Components, BEM</li>
             <li><strong id="build-label">Build:</strong> Webpack, Vite</li>
             <li><strong id="testing-label">Testing:</strong> Jest, Vitest, React Testing Library</li>
@@ -466,6 +457,7 @@
           <div class="section-title"><h3 id="tools-title">Herramientas & Metodologías</h3></div>
           <div>
             <span class="pill">VS</span>
+            <span class="pill">Figma</span>
             <span class="pill">Scrum</span>
             <span class="pill">Safe</span>
             <span class="pill">REST</span>
@@ -483,7 +475,6 @@
         </section>
       </aside>
 
-      <!-- Right column -->
       <section class="col-right" aria-label="Experiencia y educación">
         <section>
           <div class="section-title"><h3 id="experience-title">Experiencia Profesional</h3></div>
@@ -547,20 +538,16 @@
   </div>
 
   <script>
-    // Theme toggle functionality
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
 
-    // Check for saved theme preference or default to 'light'
     const currentTheme = localStorage.getItem('theme') || 'light';
     
-    // Apply the saved theme
     if (currentTheme === 'dark') {
       body.setAttribute('data-theme', 'dark');
       themeToggle.checked = true;
     }
 
-    // Toggle theme function
     function toggleTheme() {
       const isDark = body.getAttribute('data-theme') === 'dark';
       
@@ -573,10 +560,8 @@
       }
     }
 
-    // Add event listener to toggle
     themeToggle.addEventListener('change', toggleTheme);
 
-    // Optional: Respect system preference on first visit
     if (!localStorage.getItem('theme')) {
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       if (prefersDark) {
@@ -586,7 +571,6 @@
       }
     }
 
-    // Listen for system theme changes
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
       if (!localStorage.getItem('theme')) {
         if (e.matches) {
@@ -599,12 +583,11 @@
       }
     });
 
-    // Language translations
     const translations = {
       es: {
         subtitle: "Frontend Developer • Fullstack Developer • React Specialist — +10 años experiencia",
         profileTitle: "Perfil",
-        profileText1: "Desarrollador frontend con más de 10 años de experiencia en interfaces dinámicas y responsivas usando React. Formación en diseño gráfico que aporta visión UI/UX y cuidado del detalle visual.",
+        profileText1: " Desarrollador fullstack con mucho amor por el frontend, acumulo más de 10 años de experiencia en el desarrollo web y he tenido la oportunidad de participar en la creación de diversos proyectos desde su planificación hasta su puesta en marcha. Formación en diseño gráfico que aporta visión UI/UX y cuidado del detalle visual.",
         profileText2: "Con ganas de acepar nuevos desafios, aportar valor a proyectos innovadores y crecer como profesional.",
         skillsTitle: "Competencias",
         frontendLabel: "Frontend:",
@@ -648,7 +631,7 @@
       en: {
         subtitle: "Frontend Developer • Fullstack Developer • React Specialist — +10 years experience",
         profileTitle: "Profile",
-        profileText1: "Frontend developer with over 10 years of experience creating dynamic and responsive interfaces using React. Background in graphic design enhances my ability to deliver visually appealing and functional web applications.",
+        profileText1: " Full-stack developer with a passion for front-end development, I have over 10 years of experience in web development and have had the opportunity to participate in the creation of various projects from planning to launch. Training in graphic design provides UI/UX insight and attention to visual detail.",
         profileText2: "Eager to take on new challenges, contribute to innovative projects and grow as a professional.",
         skillsTitle: "Skills",
         frontendLabel: "Frontend:",
@@ -691,29 +674,22 @@
       }
     };
 
-    // Language selector functionality
     const languageSelect = document.getElementById('language-select');
     
-    // Check for saved language preference or default to browser language
     const userLang = navigator.language.split('-')[0];
     const savedLang = localStorage.getItem('lang') || (['es', 'en'].includes(userLang) ? userLang : 'es')
     
-    // Set initial language
     languageSelect.value = savedLang;
     updateLanguage(savedLang);
-
-    // Add event listener for language change
     languageSelect.addEventListener('change', (e) => {
       const lang = e.target.value;
       localStorage.setItem('lang', lang);
       updateLanguage(lang);
     });
 
-    // Function to update all text elements with translations
     function updateLanguage(lang) {
       const t = translations[lang];
       
-      // Update all elements with translations
       document.getElementById('subtitle').textContent = t.subtitle;
       document.getElementById('profile-title').textContent = t.profileTitle;
       document.getElementById('profile-text-1').textContent = t.profileText1;
@@ -757,7 +733,6 @@
       document.getElementById('print-btn').textContent = t.printBtn;
       document.getElementById('theme-label').textContent = t.themeLabel;
       
-      // Update HTML lang attribute
       document.documentElement.lang = lang;
     }
   </script>
