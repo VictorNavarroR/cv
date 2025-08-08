@@ -1,0 +1,765 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Victor José Navarro Rodríguez — CV</title>
+
+  <!-- Fuente moderna -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      padding: 20px;
+    }
+    :root{
+      --accent:#0b5b82;
+      --accent-hover:#0d6fa1;
+      --muted:#6b7280;
+      --bg:#ffffff;
+      --paper:#f8fafc;
+      --text:#0b1220;
+      --card-shadow: 0 6px 18px rgba(10, 10, 10, 0.06);
+      --border: #eef2f7;
+      --border-light: #f1f5f9;
+      --pill-bg: #eef6fb;
+      --max-width: 1000px;
+    }
+
+    [data-theme="dark"]{
+      --accent:#3b82f6;
+      --accent-hover:#60a5fa;
+      --muted:#9ca3af;
+      --bg:#1f2937;
+      --paper:#111827;
+      --text:#f9fafb;
+      --card-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+      --border: #374151;
+      --border-light: #4b5563;
+      --pill-bg: #1e3a8a;
+    }
+
+    html,body{
+      height:100%;
+      margin:0;
+      background:var(--paper);
+      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .container{
+      display: flex;
+      flex-direction: column;
+      max-width:var(--max-width);
+      margin:auto;
+      background:var(--bg);
+      box-shadow:var(--card-shadow);
+      border-radius:10px;
+      overflow:hidden;
+      padding:28px;
+      transition: all 0.3s ease;
+    }
+
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      border-bottom:1px solid var(--border);
+      padding-bottom:18px;
+    }
+
+    .hero {
+      display:flex;
+      gap:20px;
+      align-items:center;
+    }
+
+    .hero .left {
+      width:72px;
+      height:72px;
+      border-radius:12px;
+      background:linear-gradient(135deg,var(--accent), var(--accent-hover));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-weight:700;
+      font-size:22px;
+      flex-shrink:0;
+      transition: background 0.3s ease;
+    }
+
+    h1{
+      margin:0;
+      font-size:22px;
+      letter-spacing: -0.2px;
+      line-height:1.05;
+    }
+
+    .sub{
+      color:var(--muted);
+      margin-top:4px;
+      font-size:13px;
+      transition: color 0.3s ease;
+    }
+
+    .contacts{
+      text-align:right;
+      font-size:13px;
+      color:var(--muted);
+      transition: color 0.3s ease;
+    }
+    .contacts a{ 
+      color:var(--accent); 
+      text-decoration:none; 
+      transition: color 0.3s ease;
+    }
+    .contacts a:hover{
+      color:var(--accent-hover);
+    }
+    .contacts div{ margin-bottom:6px; }
+
+    /* Theme Toggle Switch */
+    .theme-toggle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+      align-self: self-end;
+    }
+
+    .theme-switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 26px;
+    }
+
+    .theme-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--border-light);
+      transition: 0.3s ease;
+      border-radius: 26px;
+      border: 1px solid var(--border);
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "☀️";
+      height: 20px;
+      width: 20px;
+      left: 2px;
+      bottom: 2px;
+      background: white;
+      transition: 0.3s ease;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    input:checked + .slider {
+      background: var(--accent);
+    }
+
+    input:checked + .slider:before {
+      content: "🌙";
+      transform: translateX(24px);
+    }
+
+    .theme-label {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    /* Language Selector */
+    .language-selector {
+      position: relative;
+      margin-bottom: 10px;
+      margin-left: 8px;
+    }
+
+    .language-selector select {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background: var(--bg);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 6px 28px 6px 12px;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .language-selector::after {
+      content: "▼";
+      font-size: 10px;
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      pointer-events: none;
+      color: var(--muted);
+    }
+
+    .controls {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    main{
+      display:flex;
+      gap:28px;
+      margin-top:22px;
+    }
+
+    .col-left{
+      width:300px;
+      min-width:220px;
+      border-right:1px solid var(--border-light);
+      padding-right:22px;
+    }
+
+    .col-right{
+      flex:1;
+      padding-left:6px;
+    }
+
+    section{
+      margin-bottom:20px;
+    }
+
+    .section-title{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:10px;
+    }
+    .section-title h3{
+      margin:0;
+      font-size:14px;
+      color:var(--accent);
+      transition: color 0.3s ease;
+    }
+
+    .skill-list, .meta-list {
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+    .skill-list li{
+      margin-bottom:8px;
+      font-size:13px;
+      color:var(--text);
+      transition: color 0.3s ease;
+    }
+
+    .meta-list li{
+      font-size:13px;
+      color:var(--text);
+      margin-bottom:4px;
+      transition: color 0.3s ease;
+    }
+
+    .pill {
+      display:inline-block;
+      background:var(--pill-bg);
+      color:var(--accent);
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px;
+      margin:6px 6px 6px 0;
+      transition: all 0.3s ease;
+    }
+
+    /* Experience */
+    .job {
+      margin-bottom:16px;
+    }
+    .job h4{
+      margin:0;
+      font-size:15px;
+      font-weight:600;
+      transition: color 0.3s ease;
+    }
+    .job .meta{
+      font-size:13px;
+      color:var(--muted);
+      margin-bottom:8px;
+      transition: color 0.3s ease;
+    }
+    .job p{
+      margin:6px 0 0;
+      font-size:13px;
+      color:var(--text);
+      line-height:1.45;
+      transition: color 0.3s ease;
+    }
+    .achievements{
+      margin-top:8px;
+      padding-left:18px;
+    }
+    .achievements li{
+      margin-bottom:6px;
+      font-size:13px;
+      color:var(--text);
+      transition: color 0.3s ease;
+    }
+
+    /* Education */
+    .edu-item{ 
+      margin-bottom:12px; 
+    }
+    .edu-item .meta{ 
+      color:var(--muted); 
+      font-size:13px;
+      transition: color 0.3s ease;
+    }
+    .edu-item div[style*="font-weight:600"]{
+      color:var(--text);
+      transition: color 0.3s ease;
+    }
+
+    footer{
+      border-top:1px solid var(--border);
+      padding-top:12px;
+      margin-top:20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      font-size:12px;
+      color:var(--muted);
+      transition: all 0.3s ease;
+    }
+
+    /* Print rules */
+    @media print{
+      body{ background:white; }
+      .container{ box-shadow:none; border-radius:0; margin:0; padding:18px; }
+      header, footer{ page-break-inside: avoid; }
+      main{ display:block; }
+      .col-left{ width:100%; border-right:none; border-bottom:1px solid #eee; padding-bottom:12px; margin-bottom:12px; }
+      .theme-toggle, .language-selector { display:none; }
+    }
+
+    /* Responsive */
+    @media (max-width:900px){
+      .container{ padding:18px; }
+      main{ flex-direction:column; }
+      .col-left{ width:100%; border-right:none; border-bottom:1px solid var(--border-light); padding-bottom:12px; margin-bottom:12px; }
+      .contacts{ text-align:left; margin-top:12px; }
+    }
+
+    /* Print button */
+    .print-btn{
+      background: transparent;
+      border:1px solid var(--border);
+      color:var(--accent);
+      padding:8px 12px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:600;
+      transition: all 0.3s ease;
+    }
+    .print-btn:hover{ 
+      background:var(--pill-bg); 
+      border-color:var(--accent);
+    }
+
+    /* Profile paragraph styles */
+    .profile-text {
+      color:var(--text) !important;
+      font-size:13px;
+      margin:0;
+      transition: color 0.3s ease;
+    }
+
+    /* Smooth transitions for all interactive elements */
+    * {
+      transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" role="document">
+    <div class="controls">
+      <div class="language-selector">
+        <select id="language-select" aria-label="Select language">
+          <option value="es">Español</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+      <div class="theme-toggle">
+        <span class="theme-label" id="theme-label">Modo</span>
+        <label class="theme-switch">
+          <input type="checkbox" id="theme-toggle" aria-label="Cambiar entre modo claro y oscuro">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+    
+    <header>
+      <div class="hero" role="banner">
+        <div class="left" aria-hidden="true">VJ</div>
+        <div>
+          <h1>Victor José Navarro Rodríguez</h1>
+          <div class="sub" id="subtitle">Frontend Developer • Fullstack Developer • React Specialist — +10 años experiencia</div>
+        </div>
+      </div>
+
+      <div class="contacts" aria-label="Contacto">
+        <div><strong>jochinavarro@gmail.com</strong></div>
+        <div>📱 +34 632 446 284</div>
+        <div>LinkedIn: <a href="https://www.linkedin.com/in/victor-jos%C3%A9-navarro-rodr%C3%ADguez-a535a252/" target="_blank">@victor.navarro</a></div>
+        <div style="margin-top:10px">
+          <button class="print-btn" id="print-btn" onclick="window.print()">Imprimir / Guardar como PDF</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Left column -->
+      <aside class="col-left" aria-label="Información lateral">
+        <section>
+          <div class="section-title"><h3 id="profile-title">Perfil</h3></div>
+          <p class="profile-text" id="profile-text-1">
+            Desarrollador frontend con más de 10 años de experiencia en interfaces dinámicas y responsivas usando React. Formación en diseño gráfico que aporta visión UI/UX y cuidado del detalle visual.
+          </p><br>
+          <p class="profile-text" id="profile-text-2">Con ganas de acepar nuevos desafios, aportar valor a proyectos innovadores y crecer como profesional.</p>
+        </section>
+
+        <section>
+          <div class="section-title"><h3 id="skills-title">Competencias</h3></div>
+          <ul class="skill-list">
+            <li><strong id="frontend-label">Frontend:</strong> JavaScript (ES6+), HTML5, React (Hooks, Context, Redux, React Query), TypeScript, VueJs, Vuex, NodeJs, ExpressJs</li>
+            <li><strong id="styles-label">Estilos:</strong> CSS3, SASS, Styled Components, BEM</li>
+            <li><strong id="build-label">Build:</strong> Webpack, Vite</li>
+            <li><strong id="testing-label">Testing:</strong> Jest, Vitest, React Testing Library</li>
+            <li><strong id="vcs-label">VCS:</strong> Git, GitHub</li>
+          </ul>
+        </section>
+
+        <section>
+          <div class="section-title"><h3 id="tools-title">Herramientas & Metodologías</h3></div>
+          <div>
+            <span class="pill">VS</span>
+            <span class="pill">Scrum</span>
+            <span class="pill">Safe</span>
+            <span class="pill">REST</span>
+            <span class="pill">Docker (básico)</span>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-title"><h3 id="languages-title">Idiomas</h3></div>
+          <ul class="meta-list">
+            <li id="spanish-lang">Español — Nativo</li>
+            <li id="english-lang">Inglés — Fluido</li>
+            <li id="catalan-lang">Catalán — Básico</li>
+          </ul>
+        </section>
+      </aside>
+
+      <!-- Right column -->
+      <section class="col-right" aria-label="Experiencia y educación">
+        <section>
+          <div class="section-title"><h3 id="experience-title">Experiencia Profesional</h3></div>
+
+          <article class="job">
+            <h4 id="quantion-job">Quantion — Fullstack Developer & Frontend Developer</h4>
+            <div class="meta" id="quantion-date">2018 – Presente</div>
+            <p id="quantion-desc-1">Desarrollo y mantenimiento de aplicaciones micro-frontends con React, TypeScript y Web Components.</p>
+            <p id="quantion-desc-2">Desarrollo y mantenimiento de aplicaciones React escalables con Hooks y Context API. Colaboración con equipos UX/UI para implementar interfaces pixel-perfect y optimización de rendimiento mediante code splitting, lazy loading y memoization.</p>
+          </article>
+
+          <article class="job">
+            <h4 id="setfile-job">SetFile — Fullstack Developer</h4>
+            <div class="meta" id="setfile-date">2017 – 2018</div>
+            <p id="setfile-desc-1">Creación de portales web con PHP, Mysql y Jquery.</p>
+            <p id="setfile-desc-2">Construcción de aplicaciones AngularJs integradas con APIs REST y mejora de la arquitectura frontend para mayor mantenibilidad.</p>
+          </article>
+
+          <article class="job">
+            <h4 id="freelance-job">Freelance Web Developer</h4>
+            <div class="meta" id="freelance-date">2014 – 2017</div>
+            <p id="freelance-desc">Entrega de temas WordPress personalizados y soluciones JavaScript para clientes internacionales, manejo de requerimientos y despliegues.</p>
+          </article>
+
+          <article class="job">
+            <h4 id="intermade-job">INTERMADE Web Creations — Web Designer & Developer</h4>
+            <div class="meta" id="intermade-date">2010 – 2014</div>
+            <p id="intermade-desc">Diseño y desarrollo de sitios WordPress con foco en usabilidad, accesibilidad y estética visual.</p>
+          </article>
+        </section>
+
+        <section>
+          <div class="section-title"><h3 id="education-title">Educación & Formación</h3></div>
+
+         <div class="edu-item">
+            <div style="font-weight:600" id="safe-cert">Certified SAFe® 6 Agilist</div>
+            <div class="meta" id="safe-date">2025 — Scaled Agile Framework (SAFe)</div>
+          </div>
+
+          <div class="edu-item">
+            <div style="font-weight:600" id="upgrade-cert">Upgrade Hub — Fullstack Bootcamp</div>
+            <div class="meta" id="upgrade-date">2022 — React avanzado, Node.js y frameworks modernos</div>
+          </div>
+
+          <div class="edu-item">
+            <div style="font-weight:600" id="university-cert">Universidad Autónoma de Santo Domingo</div>
+            <div class="meta" id="university-date">2004 – 2009 — Licenciatura en Diseño Gráfico</div>
+          </div>
+
+          <div class="edu-item">
+            <div style="font-weight:600" id="english-cert">APEC University — Programa de Inglés Intensivo</div>
+            <div class="meta" id="english-date">2012 – 2013 — Competencia profesional</div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <footer>
+      <div id="footer-text">© Victor José Navarro Rodríguez — Frontend Developer — Fullstack Developer</div>
+    </footer>
+  </div>
+
+  <script>
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    // Check for saved theme preference or default to 'light'
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    
+    // Apply the saved theme
+    if (currentTheme === 'dark') {
+      body.setAttribute('data-theme', 'dark');
+      themeToggle.checked = true;
+    }
+
+    // Toggle theme function
+    function toggleTheme() {
+      const isDark = body.getAttribute('data-theme') === 'dark';
+      
+      if (isDark) {
+        body.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
+      } else {
+        body.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    // Add event listener to toggle
+    themeToggle.addEventListener('change', toggleTheme);
+
+    // Optional: Respect system preference on first visit
+    if (!localStorage.getItem('theme')) {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (prefersDark) {
+        body.setAttribute('data-theme', 'dark');
+        themeToggle.checked = true;
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      if (!localStorage.getItem('theme')) {
+        if (e.matches) {
+          body.setAttribute('data-theme', 'dark');
+          themeToggle.checked = true;
+        } else {
+          body.removeAttribute('data-theme');
+          themeToggle.checked = false;
+        }
+      }
+    });
+
+    // Language translations
+    const translations = {
+      es: {
+        subtitle: "Frontend Developer • Fullstack Developer • React Specialist — +10 años experiencia",
+        profileTitle: "Perfil",
+        profileText1: "Desarrollador frontend con más de 10 años de experiencia en interfaces dinámicas y responsivas usando React. Formación en diseño gráfico que aporta visión UI/UX y cuidado del detalle visual.",
+        profileText2: "Con ganas de acepar nuevos desafios, aportar valor a proyectos innovadores y crecer como profesional.",
+        skillsTitle: "Competencias",
+        frontendLabel: "Frontend:",
+        stylesLabel: "Estilos:",
+        buildLabel: "Build:",
+        testingLabel: "Testing:",
+        vcsLabel: "VCS:",
+        toolsTitle: "Herramientas & Metodologías",
+        languagesTitle: "Idiomas",
+        spanishLang: "Español — Nativo",
+        englishLang: "Inglés — Fluido",
+        catalanLang: "Catalán — Básico",
+        experienceTitle: "Experiencia Profesional",
+        quantionJob: "Quantion — Fullstack Developer & Frontend Developer",
+        quantionDate: "2018 – Presente",
+        quantionDesc1: "Desarrollo y mantenimiento de aplicaciones micro-frontends con React, TypeScript y Web Components.",
+        quantionDesc2: "Desarrollo y mantenimiento de aplicaciones React escalables con Hooks y Context API. Colaboración con equipos UX/UI para implementar interfaces pixel-perfect y optimización de rendimiento mediante code splitting, lazy loading y memoization.",
+        setfileJob: "SetFile — Fullstack Developer",
+        setfileDate: "2017 – 2018",
+        setfileDesc1: "Creación de portales web con PHP, Mysql y Jquery.",
+        setfileDesc2: "Construcción de aplicaciones AngularJs integradas con APIs REST y mejora de la arquitectura frontend para mayor mantenibilidad.",
+        freelanceJob: "Freelance Web Developer",
+        freelanceDate: "2014 – 2017",
+        freelanceDesc: "Entrega de temas WordPress personalizados y soluciones JavaScript para clientes internacionales, manejo de requerimientos y despliegues.",
+        intermadeJob: "INTERMADE Web Creations — Web Designer & Developer",
+        intermadeDate: "2010 – 2014",
+        intermadeDesc: "Diseño y desarrollo de sitios WordPress con foco en usabilidad, accesibilidad y estética visual.",
+        educationTitle: "Educación & Formación",
+        safeCert: "Certified SAFe® 6 Agilist",
+        safeDate: "2025 — Scaled Agile Framework (SAFe)",
+        upgradeCert: "Upgrade Hub — Fullstack Bootcamp",
+        upgradeDate: "2022 — React avanzado, Node.js y frameworks modernos",
+        universityCert: "Universidad Autónoma de Santo Domingo",
+        universityDate: "2004 – 2009 — Licenciatura en Diseño Gráfico",
+        englishCert: "APEC University — Programa de Inglés Intensivo",
+        englishDate: "2012 – 2013 — Competencia profesional",
+        footerText: "© Victor José Navarro Rodríguez — Frontend Developer — Fullstack Developer",
+        printBtn: "Imprimir / Guardar como PDF",
+        themeLabel: "Modo"
+      },
+      en: {
+        subtitle: "Frontend Developer • Fullstack Developer • React Specialist — +10 years experience",
+        profileTitle: "Profile",
+        profileText1: "Frontend developer with over 10 years of experience creating dynamic and responsive interfaces using React. Background in graphic design enhances my ability to deliver visually appealing and functional web applications.",
+        profileText2: "Eager to take on new challenges, contribute to innovative projects and grow as a professional.",
+        skillsTitle: "Skills",
+        frontendLabel: "Frontend:",
+        stylesLabel: "Styles:",
+        buildLabel: "Build:",
+        testingLabel: "Testing:",
+        vcsLabel: "VCS:",
+        toolsTitle: "Tools & Methodologies",
+        languagesTitle: "Languages",
+        spanishLang: "Spanish — Native",
+        englishLang: "English — Fluent",
+        catalanLang: "Catalan — Basic",
+        experienceTitle: "Professional Experience",
+        quantionJob: "Quantion — Fullstack Developer & Frontend Developer",
+        quantionDate: "2018 – Present",
+        quantionDesc1: "Development and maintenance of micro-frontends applications with React, TypeScript and Web Components.",
+        quantionDesc2: "Development and maintenance of scalable React applications with Hooks and Context API. Collaboration with UX/UI teams to implement pixel-perfect interfaces and performance optimization using code splitting, lazy loading and memoization techniques.",
+        setfileJob: "SetFile — Fullstack Developer",
+        setfileDate: "2017 – 2018",
+        setfileDesc1: "Creation of web portals with PHP, Mysql and Jquery.",
+        setfileDesc2: "Building AngularJs applications integrated with REST APIs and improving frontend architecture for better maintainability.",
+        freelanceJob: "Freelance Web Developer",
+        freelanceDate: "2014 – 2017",
+        freelanceDesc: "Delivery of custom WordPress themes and JavaScript solutions for international clients, requirements management and deployments.",
+        intermadeJob: "INTERMADE Web Creations — Web Designer & Developer",
+        intermadeDate: "2010 – 2014",
+        intermadeDesc: "Design and development of WordPress websites focusing on usability, accessibility and visual aesthetics.",
+        educationTitle: "Education & Training",
+        safeCert: "Certified SAFe® 6 Agilist",
+        safeDate: "2025 — Scaled Agile Framework (SAFe)",
+        upgradeCert: "Upgrade Hub — Fullstack Bootcamp",
+        upgradeDate: "2022 — Advanced React, Node.js and modern frameworks",
+        universityCert: "Autonomous University of Santo Domingo",
+        universityDate: "2004 – 2009 — Bachelor's Degree in Graphic Design",
+        englishCert: "APEC University — Intensive English Program",
+        englishDate: "2012 – 2013 — Professional proficiency",
+        footerText: "© Victor José Navarro Rodríguez — Frontend Developer — Fullstack Developer",
+        printBtn: "Print / Save as PDF",
+        themeLabel: "Mode"
+      }
+    };
+
+    // Language selector functionality
+    const languageSelect = document.getElementById('language-select');
+    
+    // Check for saved language preference or default to browser language
+    const userLang = navigator.language.split('-')[0];
+    const savedLang = localStorage.getItem('lang') || (['es', 'en'].includes(userLang) ? userLang : 'es')
+    
+    // Set initial language
+    languageSelect.value = savedLang;
+    updateLanguage(savedLang);
+
+    // Add event listener for language change
+    languageSelect.addEventListener('change', (e) => {
+      const lang = e.target.value;
+      localStorage.setItem('lang', lang);
+      updateLanguage(lang);
+    });
+
+    // Function to update all text elements with translations
+    function updateLanguage(lang) {
+      const t = translations[lang];
+      
+      // Update all elements with translations
+      document.getElementById('subtitle').textContent = t.subtitle;
+      document.getElementById('profile-title').textContent = t.profileTitle;
+      document.getElementById('profile-text-1').textContent = t.profileText1;
+      document.getElementById('profile-text-2').textContent = t.profileText2;
+      document.getElementById('skills-title').textContent = t.skillsTitle;
+      document.getElementById('frontend-label').textContent = t.frontendLabel;
+      document.getElementById('styles-label').textContent = t.stylesLabel;
+      document.getElementById('build-label').textContent = t.buildLabel;
+      document.getElementById('testing-label').textContent = t.testingLabel;
+      document.getElementById('vcs-label').textContent = t.vcsLabel;
+      document.getElementById('tools-title').textContent = t.toolsTitle;
+      document.getElementById('languages-title').textContent = t.languagesTitle;
+      document.getElementById('spanish-lang').textContent = t.spanishLang;
+      document.getElementById('english-lang').textContent = t.englishLang;
+      document.getElementById('catalan-lang').textContent = t.catalanLang;
+      document.getElementById('experience-title').textContent = t.experienceTitle;
+      document.getElementById('quantion-job').textContent = t.quantionJob;
+      document.getElementById('quantion-date').textContent = t.quantionDate;
+      document.getElementById('quantion-desc-1').textContent = t.quantionDesc1;
+      document.getElementById('quantion-desc-2').textContent = t.quantionDesc2;
+      document.getElementById('setfile-job').textContent = t.setfileJob;
+      document.getElementById('setfile-date').textContent = t.setfileDate;
+      document.getElementById('setfile-desc-1').textContent = t.setfileDesc1;
+      document.getElementById('setfile-desc-2').textContent = t.setfileDesc2;
+      document.getElementById('freelance-job').textContent = t.freelanceJob;
+      document.getElementById('freelance-date').textContent = t.freelanceDate;
+      document.getElementById('freelance-desc').textContent = t.freelanceDesc;
+      document.getElementById('intermade-job').textContent = t.intermadeJob;
+      document.getElementById('intermade-date').textContent = t.intermadeDate;
+      document.getElementById('intermade-desc').textContent = t.intermadeDesc;
+      document.getElementById('education-title').textContent = t.educationTitle;
+      document.getElementById('safe-cert').textContent = t.safeCert;
+      document.getElementById('safe-date').textContent = t.safeDate;
+      document.getElementById('upgrade-cert').textContent = t.upgradeCert;
+      document.getElementById('upgrade-date').textContent = t.upgradeDate;
+      document.getElementById('university-cert').textContent = t.universityCert;
+      document.getElementById('university-date').textContent = t.universityDate;
+      document.getElementById('english-cert').textContent = t.englishCert;
+      document.getElementById('english-date').textContent = t.englishDate;
+      document.getElementById('footer-text').textContent = t.footerText;
+      document.getElementById('print-btn').textContent = t.printBtn;
+      document.getElementById('theme-label').textContent = t.themeLabel;
+      
+      // Update HTML lang attribute
+      document.documentElement.lang = lang;
+    }
+  </script>
+</body>
+</html>
